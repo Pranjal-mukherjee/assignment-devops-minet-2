@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minet-bc-database-service
+spec:
+  selector:
+    type: mysql-pod-label
+    app: database-pod
+  type: NodePort
+  ports:
+  - targetPort: 3306
+    port: 3306

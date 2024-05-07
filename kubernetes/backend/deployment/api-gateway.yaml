@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bc141-api-gateway-deployment
+  labels:
+    type: service
+    name: api-gateway
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api-gateway-label
+    spec:
+      containers:
+      - name: api-gateway-container
+        image: ghcr.io/pranjal-mukherjee/bootcamp141-backend-api-gateway:v81f489e139597a93b4e4597099319ff582f3211a
+        ports:
+        - containerPort: 9191
+        env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://service-registry-svc:8761/eureka/
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: api-gateway-svc
+            - name: JWT_SECRET_KEY
+              value: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+      imagePullSecrets: 
+      - name: ghcr-secret
+  selector:
+    matchLabels:
+      app: api-gateway-label

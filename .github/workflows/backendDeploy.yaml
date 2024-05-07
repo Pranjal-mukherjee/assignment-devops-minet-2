@@ -1,0 +1,60 @@
+name: BOOTCAMP141- Backend deployment
+run-name: Backend deployment triggered by ${{ github.actor }}.
+on:
+  push:
+    branches:
+      - deployment
+    paths:
+      - backend/**
+      - .github/workflows/backendDeploy.yaml
+
+jobs:
+    build_and_deploy:
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        defaults:
+          run:
+            working-directory: backend/${{ matrix.services }}
+        strategy:
+            matrix:
+                services:
+                - service-registry
+                - api-gateway
+                - user-service
+                - crypto-service
+                - wallet-service
+                - portfolio-service
+        steps:
+          - name: Checkout the code
+            uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
+          - name: Setup Java
+            uses: actions/setup-java@v3
+            with:
+                distribution: "corretto"
+                java-version: "17"
+          - name: Cache Maven packages
+            uses: actions/cache@v1
+            with:
+              path: ~/.m2
+              key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+              restore-keys: ${{ runner.os }}-m2    
+          - name: Login to GitHub Container Registry
+            run: docker login --username ${{secrets.GHCR_USERNAME}} --password ${{secrets.GHCR_PAT}} ghcr.io 
+          - name: Build Docker Image
+            run:  docker build . --tag ghcr.io/${{secrets.GHCR_USERNAME}}/bootcamp141-backend-${{matrix.services}}:v${{github.sha}}
+          - name:  Push Docker Image to GHCR
+            run: docker push ghcr.io/${{secrets.GHCR_USERNAME}}/bootcamp141-backend-${{matrix.services}}:v${{github.sha}} 
+          
+          - name: Configure AWS Credentials
+            uses: aws-actions/configure-aws-credentials@v1
+            with:
+              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              aws-region: ${{ secrets.EKS_CLUSTER_REGION }}
+          - name: Add EKS Cluster and deploy the application
+            run: |
+              aws eks update-kubeconfig --name  ${{secrets.EKS_CLUSTER_NAME}}  --region ${{secrets.EKS_CLUSTER_REGION}}
+              kubectl set image deployment/bc141-${{matrix.services}}-deployment ${{matrix.services}}-container=ghcr.io/${{secrets.GHCR_USERNAME}}/bootcamp141-backend-${{matrix.services}}:v${{github.sha}}
+          
