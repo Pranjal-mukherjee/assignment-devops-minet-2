@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: bc141-frontend-deployment
+   labels:
+    type: deployment
+    name: frontend
+spec:
+  template:
+    metadata:
+      name: frontend-pod
+      labels:
+        type: frontend-label
+    spec:
+      containers:
+      - name: frontend-container
+        image: ghcr.io/pranjal-mukherjee/bootcamp141-frontend:vce1e08b8952dbb9e1f0f143f0d29f5ad3ef3f7be
+        ports:
+        - containerPort: 80
+        env:
+        - name: API_BASE_URL
+          value: https://a3cb6a45fd828408a9b93e031ec27814-a20502782a8ff20a.elb.us-east-2.amazonaws.com
+        - name: REACT_APP_AUTH0_DOMAIN
+          value: dev-mi20r851psurczzj.us.auth0.com
+        - name: REACT_APP_AUTH0_CLIENT_ID
+          value: IDQEuZe38VBFxaO7RYTH9IGxUdm6tw0h
+      imagePullSecrets: 
+      - name: ghcr-secret
+
+  replicas: 1
+  selector:
+    matchLabels:
+      type: frontend-label

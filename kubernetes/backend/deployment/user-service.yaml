@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bc141-user-service-deployment
+  labels:
+    type: service
+    name: user
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: user-service-label
+    spec:
+      containers:
+      - name: user-service-container
+        image: ghcr.io/pranjal-mukherjee/bootcamp141-backend-user-service:v81f489e139597a93b4e4597099319ff582f3211a
+        ports:
+        - containerPort: 9001
+        env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://service-registry-svc:8761/eureka/
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://18.188.27.198:32528/minet
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: user-service-svc
+            - name: JWT_SECRET_KEY
+              value: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                  secretKeyRef:
+                      name:  database-secret
+                      key:  username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                  secretKeyRef:
+                      name:  database-secret
+                      key:  password
+            - name: SPRING_FLYWAY_ENABLED
+              value: "false"
+      imagePullSecrets: 
+      - name: ghcr-secret
+  selector:
+    matchLabels:
+      app: user-service-label

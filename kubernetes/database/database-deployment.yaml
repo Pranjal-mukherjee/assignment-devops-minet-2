@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-deployment
+  labels:
+    type: mysql-db
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: mysql-pod-label
+      app: database-pod
+  template:
+    metadata:
+      name: mysql-pod
+      labels:
+        type: mysql-pod-label
+        app: database-pod
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+                name: database-secret
+                key: password
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mysql-db-volume
+      volumes:
+         - name: mysql-db-volume
+           persistentVolumeClaim:
+             claimName: pvc-bc-minet

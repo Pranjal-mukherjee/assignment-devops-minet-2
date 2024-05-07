@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bc141-wallet-service-deployment
+  labels:
+    type: service
+    name: wallet
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wallet-service-label
+    spec:
+      containers:
+      - name: wallet-service-container
+        image: ghcr.io/pranjal-mukherjee/bootcamp141-backend-wallet-service:v81f489e139597a93b4e4597099319ff582f3211a
+        ports:
+        - containerPort: 9004
+        env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://service-registry-svc:8761/eureka/
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://18.188.27.198:32528/minet
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: wallet-service-svc
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                  secretKeyRef:
+                      name:  database-secret
+                      key:  username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                  secretKeyRef:
+                      name:  database-secret
+                      key:  password
+            - name: SPRING_FLYWAY_ENABLED
+              value: "false"
+      imagePullSecrets: 
+      - name: ghcr-secret
+  selector:
+    matchLabels:
+      app: wallet-service-label
