@@ -1,0 +1,300 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John",
+      "email": "john@zemoso.com",
+      "user_balance": 500000,
+      "created_at": "2023-12-13",
+      "password": "Password@123"
+    },
+    {
+      "id": 2,
+      "name": "Emma",
+      "email": "emma@zemoso.com",
+      "user_balance": 500000,
+      "created_at": "2023-12-13",
+      "password": "Password@123"
+    },
+    {
+      "name": "Vamsi Naga Krishna Patnala",
+      "email": "krishna.patnala@zemosolabs.com",
+      "password": "Test@1234",
+      "user_balance": 500000,
+      "created_at": "2023-12-20",
+      "id": 3
+    },
+    {
+      "name": "vamsi",
+      "email": "vamsi@gmail.com",
+      "password": "Vamsi@99",
+      "user_balance": 500000,
+      "created_at": "2023-12-20",
+      "id": 4
+    },
+    {
+      "name": "rajesh",
+      "email": "rajesh@gmail.com",
+      "password": "Rajesh@99",
+      "user_balance": 500000,
+      "created_at": "2023-12-20",
+      "id": 5
+    },
+    {
+      "name": "Rajesh Kumar",
+      "email": "rajesh.kumar@zemosolabs.com",
+      "password": "Test@1234",
+      "user_balance": 500000,
+      "created_at": "2023-12-20",
+      "id": 6
+    },
+    {
+      "name": "harshitha",
+      "email": "harshitha@gmail.com",
+      "password": "Harshitha@123",
+      "user_balance": 500000,
+      "created_at": "2023-12-21",
+      "id": 7
+    }
+  ],
+  "crypto_coins": [
+    {
+      "id": 1,
+      "name": "Bitcoin",
+      "price": 3285553.73,
+      "market_cap": 60.1,
+      "symbol": "BTC",
+      "description": "Bitcoin",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": 2,
+      "name": "Ethereum",
+      "price": 216678.1,
+      "market_cap": 25.4,
+      "symbol": "ETH",
+      "description": "Etherium",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": 3,
+      "name": "Etherium2",
+      "price": 216678.1,
+      "market_cap": 25.4,
+      "symbol": "ETH2",
+      "description": "Etherium2",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": 4,
+      "name": "Tether",
+      "price": 74.31,
+      "market_cap": 4.6,
+      "symbol": "USDT",
+      "description": "Tether",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/325/large/Tether.png?1696501661"
+    },
+    {
+      "id": 5,
+      "name": "Bitcoin Coin",
+      "price": 24942.54,
+      "market_cap": 4.2,
+      "symbol": "BNB",
+      "description": "Bitcoin coin",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970"
+    },
+    {
+      "id": 6,
+      "name": "Cardano",
+      "price": 104.52,
+      "market_cap": 3.4,
+      "symbol": "ADA",
+      "description": "Cardano",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1696502090"
+    },
+    {
+      "id": 7,
+      "name": "XRP",
+      "price": 57.21,
+      "market_cap": 2.7,
+      "symbol": "XRP",
+      "description": "XRP",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442"
+    },
+    {
+      "id": 8,
+      "name": "Dodge Coin",
+      "price": 17.64,
+      "market_cap": 2.3,
+      "symbol": "XRP",
+      "description": "XRP",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1696501409"
+    },
+    {
+      "id": 9,
+      "name": "USD Coin",
+      "price": 74.26,
+      "market_cap": 2.1,
+      "symbol": "USD",
+      "description": "USD Coin",
+      "circulating_supply": 18.8,
+      "volume": 2.9,
+      "change": "+1.06",
+      "src": "https://assets.coingecko.com/coins/images/6319/large/usdc.png?1696506694"
+    }
+  ],
+  "watchlists": [
+    {
+      "id": 1,
+      "coin_id": 1,
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "coin_id": 3,
+      "user_id": 1
+    }
+  ],
+  "wallets": [
+    {
+      "id": 1,
+      "coin_id": 1,
+      "user_id": 1,
+      "balance": 0.02345
+    },
+    {
+      "id": 2,
+      "coin_id": 1,
+      "user_id": 2,
+      "balance": 0.03345
+    },
+    {
+      "id": 3,
+      "coin_id": 2,
+      "user_id": 1,
+      "balance": 0.04345
+    }
+  ],
+  "trades": [
+    {
+      "id": 1,
+      "date": "2023-12-03T06:25:14.933Z",
+      "supplier": 1,
+      "status": "purchased",
+      "quantity": 0.023451,
+      "value": 34000,
+      "coin_id": 1,
+      "delivery_fee": 0,
+      "deposited_to": "Etherium Wallet",
+      "transaction_fee": 1000,
+      "total_amount": 35000,
+      "payment_method": "Bitcoin Wallet",
+      "user_id": 1,
+      "transaction_status": "Success"
+    },
+    {
+      "id": 2,
+      "date": "2023-12-05T06:25:14.933Z",
+      "supplier": 1,
+      "status": "purchased",
+      "quantity": 0.023451,
+      "value": 34000,
+      "coin_id": 1,
+      "delivery_fee": 0,
+      "deposited_to": "Etherium Wallet",
+      "transaction_fee": 1000,
+      "total_amount": 35000,
+      "payment_method": "Bitcoin Wallet",
+      "user_id": 2,
+      "transaction_status": "Pending"
+    },
+    {
+      "id": 3,
+      "date": "2023-12-12T06:25:14.933Z",
+      "supplier": 1,
+      "status": "purchased",
+      "quantity": 0.023451,
+      "value": 34000,
+      "coin_id": 2,
+      "delivery_fee": 0,
+      "deposited_to": "Etherium Wallet",
+      "transaction_fee": 1000,
+      "total_amount": 35000,
+      "payment_method": "USD Wallet",
+      "user_id": 1,
+      "transaction_status": "Success"
+    },
+    {
+      "date": "2023-12-20T11:45:46.780Z",
+      "supplier": 1,
+      "status": "sold",
+      "quantity": 0,
+      "value": 0,
+      "coin_id": 2,
+      "delivery_fee": 0,
+      "deposited_to": "Bitcoin wallet",
+      "transaction_fee": 1000,
+      "total_amount": 1000,
+      "payment_method": "USD Wallet",
+      "user_id": 1,
+      "transaction_status": "Success",
+      "id": 4
+    },
+    {
+      "date": "2023-12-21T08:02:36.088Z",
+      "supplier": 1,
+      "status": "sold",
+      "quantity": 0.0042212,
+      "value": 13868.979405076,
+      "coin_id": 2,
+      "delivery_fee": 0,
+      "deposited_to": "Bitcoin wallet",
+      "transaction_fee": 1000,
+      "total_amount": 14868.979405076,
+      "payment_method": "USD Wallet",
+      "user_id": 1,
+      "transaction_status": "Success",
+      "id": 5
+    },
+    {
+      "date": "2023-12-21T08:32:23.442Z",
+      "supplier": 1,
+      "status": "sold",
+      "quantity": 0.0046902,
+      "value": 15409.904104446001,
+      "coin_id": 1,
+      "delivery_fee": 0,
+      "deposited_to": "Bitcoin wallet",
+      "transaction_fee": 1000,
+      "total_amount": 16409.904104446003,
+      "payment_method": "USD Wallet",
+      "user_id": 7,
+      "transaction_status": "Success",
+      "id": 6
+    }
+  ]
+}
